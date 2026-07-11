@@ -281,7 +281,7 @@
     position: sticky; top: 0;
   }
   table.price thead th small { display: block; font-weight: 400; font-size: 12.5px; opacity: 0.85; letter-spacing: 0.04em; }
-  table.price td.weight { text-align: left; white-space: nowrap; }
+  table.price td.weight { text-align: center; white-space: nowrap; }
   table.price td.weight small { display: block; font-size: 12.5px; color: var(--text-mid); line-height: 1.4; white-space: normal; }
   table.price tbody tr:nth-child(even) { background: var(--sky-pale); }
   .price-notes { margin-top: 20px; font-size: 15px; color: var(--text-mid); padding: 0; }
@@ -428,13 +428,46 @@
   .float-tel .l1 { font-size: 12px; letter-spacing: 0.1em; }
   .float-tel .l2 { font-size: 20px; font-weight: 700; line-height: 1.3; font-variant-numeric: tabular-nums; }
 
+  /* スマホのみ改行する<br>（PCでは非表示） */
+  .br-sp { display: none; }
+
   @media (max-width: 720px) {
-    .hero { padding: 24px 20px 56px; }
-    .header-tel .tel-num { font-size: 20px; }
+    /* ヘッダー: ロゴ・社名・電話番号を大きめに（添付イメージの割合） */
+    .header-inner { gap: 10px 14px; }
+    .brand-mark { width: 52px; height: 52px; }
+    .brand-text .brand-name { font-size: min(27px, 6.6vw); }
+    .header-tel .tel-note { font-size: min(12.5px, 3.2vw); white-space: nowrap; }
+    .header-tel .tel-num { font-size: min(24px, 5.8vw); white-space: nowrap; }
     section { padding: 52px 0; }
     .float-tel { left: 16px; right: 16px; }
+
+    /* ヒーロー: ロゴを大きく先頭に、文字はセンター揃え */
+    .hero { padding: 24px 20px 56px; }
     .hero-inner { flex-direction: column; }
-    .hero-logo { width: min(240px, 62vw); order: -1; }
+    .hero-logo { width: min(330px, 80vw); order: -1; }
+    .hero-main { text-align: center; }
+    .hero-chips { justify-content: center; }
+    .hero-cta { justify-content: center; }
+    .btn-ghost { justify-content: center; }
+
+    /* スマホのみの改行を有効化 */
+    .br-sp { display: inline; }
+
+    /* 料金表: 体重列を狭くして「お引き取り供養」列まで1画面に収める */
+    table.price { min-width: 520px; font-size: 14.5px; }
+    table.price th, table.price td { padding: 10px 8px; }
+    table.price thead th { font-size: 13px; letter-spacing: 0.02em; }
+    table.price thead th small { font-size: 10.5px; }
+    table.price thead th:first-child, table.price td.weight { width: 104px; font-size: 13px; }
+    table.price td.weight small { font-size: 10.5px; }
+
+    /* 「ご自宅の前が、その子だけの葬儀場になります。」を1行に収める */
+    .car .sec-note { white-space: nowrap; font-size: min(15.5px, calc((100vw - 44px) / 23)); }
+
+    /* 最終CTAのフリーダイヤルボタンを1行で表示 */
+    .final-cta .btn-tel { padding: 14px 20px; }
+    .final-cta .btn-tel .l1 { white-space: nowrap; font-size: min(13px, 3.6vw); }
+    .final-cta .btn-tel .l2 { white-space: nowrap; font-size: min(30px, 8vw); }
   }
 
   /* ===== PC・大画面（1400px以上）: 幅を広げて文字も大きく ===== */
@@ -765,7 +798,7 @@
       </div>
     </div>
     <div class="car-banner">
-      <span class="big">体重50kgまでの大型犬に対応しています</span>
+      <span class="big">体重50kgまでの大型犬に<br class="br-sp">対応しています</span>
       <span class="small">大型のわんちゃんに対応できる訪問火葬車は多くありません。<br>他社で断られた場合も、ぜひ一度ご相談ください。</span>
     </div>
   </div>
@@ -776,7 +809,7 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-eyebrow">PETS</span>
-      <h2 class="sec-title">火葬できるペットちゃん一覧</h2>
+      <h2 class="sec-title">火葬できる<br class="br-sp">ペットちゃん一覧</h2>
     </div>
     <ul class="pets-grid">
       <li>犬<small>小型犬〜50kgの大型犬</small></li>

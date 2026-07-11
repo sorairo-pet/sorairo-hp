@@ -472,9 +472,13 @@
     .header-tel .tel-note { font-size: min(12px, 3.1vw); white-space: nowrap; }
     .header-tel .tel-num { font-size: min(22px, 5.6vw); white-space: nowrap; }
 
-    /* 対応エリアの帯（スマホでは少し小さく） */
-    .hero-area { font-size: min(14px, 3.6vw); padding: 5px 12px; gap: 8px; }
-    .hero-area .tag { font-size: min(12px, 3.1vw); }
+    /* 対応エリアの帯（スマホでは必ず1行に収まるよう自動縮小） */
+    .hero-area {
+      white-space: nowrap; letter-spacing: 0.02em;
+      font-size: min(14px, calc((100vw - 100px) / 21));
+      padding: 5px 12px; gap: 8px;
+    }
+    .hero-area .tag { font-size: 0.86em; }
     section { padding: 52px 0; }
     .float-tel { left: 16px; right: 16px; }
 
@@ -623,7 +627,7 @@
     <div class="hero-main">
       <p class="hero-lead serif">住み慣れたおうちで、<br>その子らしいお見送りを。</p>
       <p class="hero-area"><span class="tag">対応エリア</span>福岡県・佐賀県・大分県（日田市）</p>
-      <p class="hero-sub">福岡・佐賀・大分（日田）の訪問ペット火葬・供養「そら色」。火葬設備を積んだ専用車でご自宅までお伺いし、ご家族に寄り添うお別れの時間をお手伝いします。</p>
+      <p class="hero-sub">火葬設備を積んだ専用車でご自宅までお伺いし、ご家族に寄り添うお別れの時間をお手伝いします。</p>
       <span class="hero-strong">
         <span class="big">50kgまでの大型犬も、お見送りできます</span>
         <span class="small">大型のわんちゃんに対応できる訪問火葬は限られています。まずはご相談ください。</span>

@@ -436,6 +436,73 @@
     .hero-inner { flex-direction: column; }
     .hero-logo { width: min(240px, 62vw); order: -1; }
   }
+
+  /* ===== PC・大画面（1400px以上）: 幅を広げて文字も大きく ===== */
+  @media (min-width: 1400px) {
+    .wrap, .header-inner, .hero-inner, .footer-inner { max-width: 1400px; }
+    body { font-size: 19px; }
+    .header-tel .tel-num { font-size: 28px; }
+    .site-nav ul { font-size: 16px; }
+
+    /* ヒーロー: 左に文章、右にロゴ＋QRを縦に並べる */
+    .hero { padding: 16px 20px 56px; }
+    .hero-inner {
+      display: grid; grid-template-columns: minmax(0, 1fr) 500px;
+      grid-template-areas: 'main logo' 'main sns';
+      align-items: center; gap: 14px 48px;
+    }
+    .hero-main { grid-area: main; max-width: 820px; }
+    .hero-logo { grid-area: logo; width: 300px; }
+    .hero-sns { grid-area: sns; align-self: start; margin-top: 0; }
+    .hero-lead { font-size: 33px; }
+    .hero-sub { font-size: 18.5px; }
+    .hero-strong .big { font-size: 27px; }
+    .hero-strong .small { font-size: 15.5px; }
+    .hero-chips li { font-size: 15px; padding: 6px 16px; }
+    .btn-tel .l1 { font-size: 14px; }
+    .btn-tel .l2 { font-size: 30px; }
+    .btn-ghost { font-size: 18px; }
+    .hero-sns .sns-title { font-size: 15.5px; }
+    .hero-sns .sns-title small { font-size: 12.5px; }
+    .hero-sns .sns-grid a { width: 104px; }
+
+    .sec-title { font-size: 38px; }
+    .sec-note { font-size: 17.5px; }
+    .reason-card h3 { font-size: 21px; }
+    .reason-card p { font-size: 17.5px; }
+    .plan-name { font-size: 25px; }
+    .plan-tag { font-size: 14.5px; }
+    .plan-price .num { font-size: 42px; }
+    .plan-desc { font-size: 17px; }
+    .plan-feats { font-size: 17px; }
+    table.price { font-size: 17.5px; }
+    table.price thead th { font-size: 16px; }
+    table.price th, table.price td { padding: 13px 16px; }
+    .price-notes { font-size: 16px; }
+    .care-card h3 { font-size: 20px; }
+    .care-card p { font-size: 17px; }
+    .care-note { max-width: 900px; font-size: 17px; }
+    .car-card h3 { font-size: 20px; }
+    .car-card p { font-size: 17px; }
+    .car-banner { max-width: 900px; }
+    .car-banner .small { font-size: 16px; }
+    .pets-grid { max-width: 1000px; }
+    .pets-grid li { font-size: 17.5px; }
+    .pets-note { font-size: 17px; }
+    .flow-list { max-width: 900px; }
+    .flow-body h3 { font-size: 21px; }
+    .flow-body p { font-size: 17px; }
+    .area-box { max-width: 900px; }
+    .area-main { font-size: 25px; }
+    .area-box p { font-size: 17.5px; }
+    .area-pref li { font-size: 18px; }
+    .faq-list { max-width: 940px; }
+    details.faq summary { font-size: 18.5px; }
+    .faq-a { font-size: 17.5px; }
+    .company-table { max-width: 900px; font-size: 18px; }
+    .final-cta p { font-size: 17.5px; }
+    .site-footer { font-size: 16px; }
+  }
 </style>
 
 

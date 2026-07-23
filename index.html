@@ -408,6 +408,17 @@
   details.faq[open] summary { border-bottom: 1px solid var(--sky-light); }
   .faq-a { padding: 16px 20px 18px 48px; font-size: 16px; color: var(--text-mid); }
 
+  /* ===== キャンセル・日時変更 ===== */
+  .cancel-box {
+    max-width: 780px; margin: 0 auto 24px; background: white;
+    border-radius: 16px; padding: 30px 32px; box-shadow: 0 2px 14px rgba(58,124,165,0.1);
+  }
+  .cancel-box p { font-size: 16px; color: var(--text-mid); line-height: 1.8; }
+  .cancel-box p + p { margin-top: 10px; }
+  .cancel-table { max-width: 780px; margin: 0 auto; width: 100%; border-collapse: collapse; font-size: 16.5px; }
+  .cancel-table th, .cancel-table td { padding: 15px 16px; border-bottom: 1px solid var(--sky-light); text-align: left; vertical-align: top; }
+  .cancel-table th { width: 40%; color: var(--sky-deep); font-weight: 700; letter-spacing: 0.06em; white-space: nowrap; }
+
   /* ===== 会社概要 ===== */
   .company-table { max-width: 760px; margin: 0 auto; width: 100%; border-collapse: collapse; font-size: 16.5px; }
   .company-table th, .company-table td { padding: 15px 16px; border-bottom: 1px solid var(--sky-light); text-align: left; vertical-align: top; }
@@ -618,6 +629,7 @@
         <li><a href="#flow">ご葬儀の流れ</a></li>
         <li><a href="#area">対応エリア</a></li>
         <li><a href="#faq">よくあるご質問</a></li>
+        <li><a href="#cancel">キャンセルについて</a></li>
         <li><a href="#company">会社概要</a></li>
       </ul>
     </nav>
@@ -981,6 +993,25 @@
   </div>
 </section>
 
+<!-- ===== キャンセル・日時変更 ===== -->
+<section id="cancel">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">CANCEL</span>
+      <h2 class="sec-title">キャンセル・日時変更について</h2>
+    </div>
+    <div class="cancel-box">
+      <p>トラブル防止のため、ご予約の変更やキャンセルはできるだけお早めにご連絡ください。ご事情による変更は可能な限り対応いたします。</p>
+      <p>ご予約時間を過ぎてもご連絡がない場合は、キャンセル扱いとさせていただく場合がございます。出発後の日時変更につきましても、キャンセルと同じ費用を頂戴いたします。</p>
+    </div>
+    <table class="cancel-table">
+      <tr><th>出発前の変更・キャンセル</th><td>無料</td></tr>
+      <tr><th>出発後〜到着前の変更・キャンセル</th><td>ご予約料金の30%</td></tr>
+      <tr><th>到着後の変更・キャンセル</th><td>ご予約料金の50%</td></tr>
+    </table>
+  </div>
+</section>
+
 <!-- ===== 会社概要 ===== -->
 <section id="company">
   <div class="wrap">
@@ -1025,6 +1056,7 @@
         <li><a href="#flow">ご葬儀の流れ</a></li>
         <li><a href="#area">対応エリア</a></li>
         <li><a href="#faq">よくあるご質問</a></li>
+        <li><a href="#cancel">キャンセルについて</a></li>
         <li><a href="#company">会社概要</a></li>
       </ul>
     </nav>

@@ -1134,3 +1134,126 @@
     .header-tel .tel-num  { color: var(--sky-deep); font-size: min(19.5px, 5vw); letter-spacing: 0; }
     .header-tel .tel-num::before { content: "📞"; font-size: 0.74em; margin-right: 3px; }
   }
+
+/* ===== スマホの縦を詰める（2026/9/21） =====
+   ページが長すぎたため、スマホ（720px以下）の縦の余白と行間だけを詰めた。文章は変えていない。
+   ヘッダーとヒーロー（写真・50kgの帯・スライドショー）は触らない＝帯の下端689pxを保つため。
+   ファイルの最後に置くこと（上にある同じ強さの指定に勝つため） */
+@media (max-width: 720px) {
+  /* 節の上下と見出しの下 */
+  section { padding: 32px 0; line-height: 1.7; }
+  .sec-head { margin-bottom: 20px; }
+  .sec-eyebrow { margin-bottom: 2px; }
+  .sec-title { line-height: 1.45; }
+  .sec-note { margin-top: 6px; }
+
+  /* 箱と箱のすき間・箱の内側 */
+  .reason-grid, .plan-grid, .care-grid, .car-grid { gap: 12px; }
+  .reason-card { padding: 18px 18px; }
+  .reason-icon { width: 44px; height: 44px; margin-bottom: 8px; }
+  .reason-card h3 { margin-bottom: 6px; }
+  .chain { padding: 18px 16px; margin-bottom: 14px; }
+  .chain-title { margin-bottom: 12px; }
+  .chain-steps { margin-bottom: 10px; }
+  .chain-note { line-height: 1.7; }
+  .greet-box { padding: 16px 16px; gap: 14px; }
+  .greet-title { margin: 0 0 8px; }
+  .greet-body p { margin-bottom: 6px; }
+  .greet-name { margin-top: 10px; padding-top: 10px; }
+
+  .plan-card { padding: 22px 18px 16px; }
+  .plan-tag { margin-bottom: 8px; }
+  .plan-price { margin-bottom: 10px; }
+  .plan-desc { margin-bottom: 10px; }
+  .plan-feats li { padding: 6px 4px; }
+
+  table.price th, table.price td { padding: 7px 3px; }
+  .price-notes { margin-top: 12px; }
+  .price-notes li { margin-bottom: 2px; }
+
+  .care-grid { gap: 20px; }  /* 番号の丸が上にはみ出すので、ここだけ少し広め */
+  .care-card { padding: 20px 16px 16px; }
+  .care-card h3 { margin: 2px 0 6px; }
+  .care-note { margin-top: 16px; padding: 14px 16px; }
+
+  .car-photos { gap: 12px; margin-bottom: 14px; }
+  .car-photos figcaption { margin-top: 5px; }
+  .car-card { padding: 18px 16px; }
+  .car-card h3 { margin-bottom: 6px; }
+  .car-banner { margin-top: 16px; padding: 16px 16px; }
+
+  .pets-grid { gap: 8px; }
+  .pets-grid li { padding: 10px 6px; }
+  .pet-ic { margin-bottom: 4px; }
+  .pets-note { margin-top: 12px; }
+
+  .flow-item { padding: 14px 0; gap: 14px; }
+  .flow-num { width: 40px; height: 40px; font-size: 19px; }
+
+  .area-box { padding: 22px 16px; }
+  .area-main { margin-bottom: 8px; }
+  .area-pref { margin: 10px 0 4px; gap: 8px; }
+  .area-pref li { padding: 5px 20px; }
+  .area-detail { margin: 10px auto 12px; gap: 6px; }
+  .area-detail > div { padding-bottom: 6px; }
+  .area-detail dd, .area-time, .base-note, .base-card p { line-height: 1.7; }
+  .area-time { margin-top: 10px; padding: 10px 14px; }
+  .bases { gap: 10px; margin: 14px 0 2px; }
+  .base-card { padding: 14px 16px; }
+  .base-note { margin-top: 10px; }
+
+  details.faq { margin-bottom: 8px; }
+  details.faq summary { padding: 12px 14px; }
+  .faq-a { padding: 12px 14px 14px 40px; }
+
+  .cancel-box { padding: 18px 18px; margin-bottom: 14px; }
+  .cancel-box p { line-height: 1.7; }
+  .cancel-table th, .cancel-table td, .company-table th, .company-table td { padding: 10px 10px; }
+
+  .hero-sns { padding: 4px 0; }
+
+  .final-cta { padding: 36px 16px; line-height: 1.7; }
+  .final-cta p { margin-bottom: 16px; }
+  .site-footer { padding: 28px 16px 30px; line-height: 1.7; }
+  .footer-inner { gap: 18px; }
+  .copyright { margin-top: 18px; }
+}
+
+/* ===== スマホで長い節をたたむ（2026/9/21） =====
+   ご葬儀の流れ・キャンセル・会社概要（class="sp-fold"）。見出しの下の「開いて見る」で開く。
+   ボタンは slides.js が作る。JSが動かなければ、たたまずに全部見せる（.is-foldable が付かないため） */
+.fold-btn { display: none; }
+@media (max-width: 720px) {
+  .sp-fold.is-foldable:not(.is-open) .wrap > :not(.sec-head):not(.fold-btn) { display: none; }
+  .sp-fold.is-foldable .sec-head { margin-bottom: 12px; }
+  .fold-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; max-width: 320px; margin: 0 auto;
+    background: white; color: var(--sky-deep);
+    border: 1.5px solid var(--sky-light); border-radius: 999px;
+    padding: 10px 16px; font: inherit; font-size: 15px; font-weight: 700; letter-spacing: 0.08em;
+    cursor: pointer; box-shadow: 0 2px 8px rgba(58,124,165,0.12);
+  }
+  .fold-btn::after { content: "▼"; font-size: 11px; color: var(--sky-mid); }
+  .sp-fold.is-open .fold-btn { margin-bottom: 18px; }
+  .sp-fold.is-open .fold-btn::after { content: "▲"; }
+
+  /* 火葬車の写真2枚を横に並べる */
+  .car-photos { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .car-photos img { border-radius: 10px; aspect-ratio: 4 / 3; object-fit: cover; }
+  .car-photos figcaption { font-size: min(12px, 3.1vw); line-height: 1.5; }
+
+  /* SNS：スマホでは自分の画面のQRは読めないので、QRを消して色つきのボタンにする */
+  .hero-sns .sns-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+  .hero-sns .sns-grid a { width: auto; padding: 0; border: 0; box-shadow: none; background: none; }
+  .hero-sns .sns-grid img { display: none; }
+  .hero-sns .sns-tag { margin: 0; font-size: 14.5px; padding: 11px 4px; letter-spacing: 0.04em; }
+  .hero-sns { padding: 12px 12px; }
+
+  /* 料金表：体重を1行に（体重の列を広げ、残り3列を等分） */
+  table.price thead th:first-child, table.price td.weight { width: 86px; font-size: 11px; letter-spacing: -0.03em; }
+  /* 見出し「お引き取り供養」が「供|養」で折れないよう、見出しだけ左右の余白を詰める */
+  table.price thead th { padding-left: 1px; padding-right: 1px; font-size: min(10.5px, 2.8vw); white-space: nowrap; }
+  table.price thead th small { white-space: normal; }
+  table.price td.weight { white-space: nowrap; }
+}

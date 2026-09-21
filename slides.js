@@ -89,3 +89,37 @@
   paint();
   bar.style.width = '0%';
 })();
+
+// スマホで長い節をたたむ（2026/9/21）
+// class="sp-fold" の節は、スマホ（720px以下）では見出しと「開く」ボタンだけを出す。
+// 　たたむのはCSS（style.css末尾）で、このJSが動いた時だけ（.is-foldable）＝JSが止まっても中身は読める。
+// 　ページ内メニューからその節へ飛んだ時は、自動で開く。
+(function () {
+  var secs = [].slice.call(document.querySelectorAll('section.sp-fold'));
+  secs.forEach(function (sec) {
+    var head = sec.querySelector('.sec-head');
+    if (!head) { return; }
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'fold-btn';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.textContent = '開いて見る';
+    head.parentNode.insertBefore(btn, head.nextSibling);
+    btn.addEventListener('click', function () { setOpen(sec, !sec.classList.contains('is-open')); });
+    sec.classList.add('is-foldable');
+  });
+  function setOpen(sec, open) {
+    sec.classList.toggle('is-open', open);
+    var btn = sec.querySelector('.fold-btn');
+    if (btn) {
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? '閉じる' : '開いて見る';
+    }
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) { return; }
+    var sec = document.getElementById(a.getAttribute('href').slice(1));
+    if (sec && sec.classList.contains('is-foldable')) { setOpen(sec, true); }
+  });
+})();

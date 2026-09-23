@@ -123,3 +123,20 @@
     if (sec && sec.classList.contains('is-foldable')) { setOpen(sec, true); }
   });
 })();
+
+// 画面下の相談ボタン（2026/9/23）
+// 　最初の画面では出さない（50kgの帯に重なるため）。少し下へ読み進めたら下から出す。
+// 　ヘッダーの電話ボタンはそのまま。こちらはLINEを並べるのが目的。
+(function () {
+  var bar = document.querySelector('.sp-bar');
+  if (!bar) { return; }
+  var busy = false;
+  function update() {
+    busy = false;
+    bar.classList.toggle('is-show', window.scrollY > 320);
+  }
+  window.addEventListener('scroll', function () {
+    if (!busy) { busy = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+})();

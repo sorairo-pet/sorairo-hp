@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<!-- ▼ Google広告の計測タグ（AW-18467289034）。電話番号のタップを成果として数える。2ページとも同じものを置く ▼ -->
+<!-- ▼ Google広告の計測タグ（AW-18467289034）。電話番号とLINEのタップを成果として数える。2ページとも同じものを置く ▼ -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18467289034"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -10,9 +10,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'AW-18467289034');
 var ADS_TEL_LABEL = 'I-BoCOu8_o0dEMrv8eVE'; // Google広告の「コンバージョン」で作った成果のラベル（空のあいだは送らない）
+var ADS_LINE_LABEL = '7w-RCP2F8JsdEMrv8eVE'; // 成果「HP LINEタップ」のラベル（空のあいだは送らない）
 document.addEventListener('click', function(e){
   var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
   if (a && ADS_TEL_LABEL) gtag('event', 'conversion', {'send_to': 'AW-18467289034/' + ADS_TEL_LABEL});
+  var l = e.target.closest ? e.target.closest('a[href*="lin.ee/"]') : null;
+  if (l && ADS_LINE_LABEL) gtag('event', 'conversion', {'send_to': 'AW-18467289034/' + ADS_LINE_LABEL});
 });
 </script>
 <!-- ▲ Google広告の計測タグ ここまで ▲ -->

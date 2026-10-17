@@ -9,13 +9,17 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'AW-18467289034');
+var GA4_ID = 'G-3G3HV921KN'; // Googleアナリティクス（2026/10/18）。広告以外から来た人の電話・LINEのタップも、入口つきで数える
+gtag('config', GA4_ID);
 var ADS_TEL_LABEL = 'I-BoCOu8_o0dEMrv8eVE'; // Google広告の「コンバージョン」で作った成果のラベル（空のあいだは送らない）
 var ADS_LINE_LABEL = '7w-RCP2F8JsdEMrv8eVE'; // 成果「HP LINEタップ」のラベル（空のあいだは送らない）
 document.addEventListener('click', function(e){
   var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
   if (a && ADS_TEL_LABEL) gtag('event', 'conversion', {'send_to': 'AW-18467289034/' + ADS_TEL_LABEL});
+  if (a) gtag('event', 'tel_tap', {'send_to': GA4_ID});
   var l = e.target.closest ? e.target.closest('a[href*="lin.ee/"]') : null;
   if (l && ADS_LINE_LABEL) gtag('event', 'conversion', {'send_to': 'AW-18467289034/' + ADS_LINE_LABEL});
+  if (l) gtag('event', 'line_tap', {'send_to': GA4_ID});
 });
 </script>
 <!-- ▲ Google広告の計測タグ ここまで ▲ -->

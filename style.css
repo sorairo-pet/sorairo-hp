@@ -1322,3 +1322,6 @@
   .care-lead { font-size: 15px; padding: 12px 12px; }
   .shop-notice { font-size: 14.5px; text-align: left; }
 }
+
+/* 本文の中の電話番号（2026/10/18）。iPhoneが文字の番号を自動でリンクにすると計測に入らないため、tel:リンクにした。見た目は文字の色のまま下線だけ */
+.tel-inline { color: inherit; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }

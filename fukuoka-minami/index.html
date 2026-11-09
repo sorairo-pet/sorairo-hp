@@ -21,6 +21,23 @@ document.addEventListener('click', function(e){
   if (l && ADS_LINE_LABEL) gtag('event', 'conversion', {'send_to': 'AW-18467289034/' + ADS_LINE_LABEL});
   if (l) gtag('event', 'line_tap', {'send_to': GA4_ID});
 });
+// どこまで読まれたか（2026/11/9）。各まとまり（section）の上の端が画面の上6割に入ったら、1回だけ section_view を送る（例 '04_prices'＝上から4番目の料金表。最初の画面＝ヒーローは数えない）。
+// 料金表は「本気で探している人」の目印として price_view も送る。見た目は何も変わらない
+document.addEventListener('DOMContentLoaded', function(){
+  if (!('IntersectionObserver' in window)) return;
+  var secs = document.querySelectorAll('section[id]'), name = {}, sent = {};
+  for (var i = 0; i < secs.length; i++) name[secs[i].id] = (i < 9 ? '0' : '') + (i + 1) + '_' + secs[i].id;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      var id = en.target.id;
+      if (!en.isIntersecting || sent[id]) return;
+      sent[id] = 1; io.unobserve(en.target);
+      gtag('event', 'section_view', {'send_to': GA4_ID, 'section': name[id]});
+      if (id === 'prices') gtag('event', 'price_view', {'send_to': GA4_ID});
+    });
+  }, {rootMargin: '0px 0px -40% 0px'});
+  for (var j = 0; j < secs.length; j++) io.observe(secs[j]);
+});
 </script>
 <!-- ▲ Google広告の計測タグ ここまで ▲ -->
 <meta name="viewport" content="width=device-width, initial-scale=1">

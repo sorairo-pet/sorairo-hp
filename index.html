@@ -10,16 +10,18 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'AW-18467289034');
 var GA4_ID = 'G-3G3HV921KN'; // Googleアナリティクス（2026/10/18）。広告以外から来た人の電話・LINEのタップも、入口つきで数える
-gtag('config', GA4_ID);
+// 見た時刻（日本時間の「13:42」）。GA4の画面は時の単位までしか出ないので、着信時刻と分で突き合わせるために全部の記録に付ける（2026/11/9）
+function jstHm(){ try { return new Date().toLocaleTimeString('ja-JP', {timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', hour12: false}); } catch (e) { var d = new Date(); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); } }
+gtag('config', GA4_ID, {'jst_hm': jstHm()});
 var ADS_TEL_LABEL = 'I-BoCOu8_o0dEMrv8eVE'; // Google広告の「コンバージョン」で作った成果のラベル（空のあいだは送らない）
 var ADS_LINE_LABEL = '7w-RCP2F8JsdEMrv8eVE'; // 成果「HP LINEタップ」のラベル（空のあいだは送らない）
 document.addEventListener('click', function(e){
   var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
   if (a && ADS_TEL_LABEL) gtag('event', 'conversion', {'send_to': 'AW-18467289034/' + ADS_TEL_LABEL});
-  if (a) gtag('event', 'tel_tap', {'send_to': GA4_ID});
+  if (a) gtag('event', 'tel_tap', {'send_to': GA4_ID, 'jst_hm': jstHm()});
   var l = e.target.closest ? e.target.closest('a[href*="lin.ee/"]') : null;
   if (l && ADS_LINE_LABEL) gtag('event', 'conversion', {'send_to': 'AW-18467289034/' + ADS_LINE_LABEL});
-  if (l) gtag('event', 'line_tap', {'send_to': GA4_ID});
+  if (l) gtag('event', 'line_tap', {'send_to': GA4_ID, 'jst_hm': jstHm()});
 });
 // どこまで読まれたか（2026/11/9）。各まとまり（section）の上の端が画面の上6割に入ったら、1回だけ section_view を送る（例 '04_prices'＝上から4番目の料金表。最初の画面＝ヒーローは数えない）。
 // 料金表は「本気で探している人」の目印として price_view も送る。見た目は何も変わらない
@@ -32,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function(){
       var id = en.target.id;
       if (!en.isIntersecting || sent[id]) return;
       sent[id] = 1; io.unobserve(en.target);
-      gtag('event', 'section_view', {'send_to': GA4_ID, 'section': name[id]});
-      if (id === 'prices') gtag('event', 'price_view', {'send_to': GA4_ID});
+      gtag('event', 'section_view', {'send_to': GA4_ID, 'section': name[id], 'jst_hm': jstHm()});
+      if (id === 'prices') gtag('event', 'price_view', {'send_to': GA4_ID, 'jst_hm': jstHm()});
     });
   }, {rootMargin: '0px 0px -40% 0px'});
   for (var j = 0; j < secs.length; j++) io.observe(secs[j]);

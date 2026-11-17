@@ -1017,7 +1017,14 @@
      下地（::before）は「空だけ」の画像 hero-sky.jpg を全面に敷き、
      その上（::after）に動物入りの写真を“左半分だけ”重ねる。
      右半分はスライドショーが乗るので、動物を出すと必ず隠れるため。
-     重ねた写真の右端は mask で溶かして、継ぎ目を見せない。 */
+     重ねた写真のふちは mask で溶かして、継ぎ目を見せない。
+     2026/11/17 猫ちゃんの顔が「50kgの帯」の裏に隠れていたので置き方を変えた。
+       前：左半分の箱に「右上ぞろえ」＝画面の幅で猫の位置がずれ、帯の裏に入っていた。
+       今：箱＝写真そのものの大きさにして、文字のかたまり（.hero-main）の左端を基準に置く。
+         --ml … 文字の左端／--ih … 写真の高さ／
+         --cx … 猫ちゃんの左耳を、文字の左端から何pxの所に置くか／--py … 写真の上端
+       795・752・1397 は hero-bg.jpg の「猫の左耳のx」「高さ」「幅」（写真を替えたら直す）。
+       見比べ：ホームページ/確認用プレビュー/猫が見える案/見比べ.html */
   @media (min-width: 721px) {
     .hero.has-photo::before {
       background-image:
@@ -1029,18 +1036,35 @@
       background-repeat: no-repeat, no-repeat;
     }
     .hero.has-photo::after {
-      content: ""; position: absolute; left: 0; top: 0; bottom: 0; z-index: 0;
-      width: min(1045px, 55%); pointer-events: none;
-      background: url("hero-bg.jpg") right top / auto min(100%, 660px) no-repeat;
+      /* 1400px未満の2列（文字の列は最大1040px）。タブレット縦・1400px以上は下で上書き */
+      --ml: max(20px, calc((100% - 1040px) / 2));
+      --ih: 540px; --cx: 150px; --py: -8px;
+      content: ""; position: absolute; z-index: 0; pointer-events: none;
+      left: calc(var(--ml) + var(--cx) - var(--ih) * 795 / 752);
+      top: var(--py);
+      width: calc(var(--ih) * 1397 / 752); height: var(--ih);
+      background: url("hero-bg.jpg") 0 0 / 100% 100% no-repeat;
       opacity: 0.82;
-      /* 左右とも溶かす。左を切らないと、写真の左端が縦の線になって見える */
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 84%, transparent 100%);
-              mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 84%, transparent 100%);
+      /* 4方向とも溶かす（左は空だけなので広めに）。左右と上下の2枚を重ねて、両方かかった所だけ見せる */
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%, #000 90%, transparent 100%),
+                          linear-gradient(180deg, transparent 0%, #000 6%, #000 80%, transparent 100%);
+              mask-image: linear-gradient(90deg, transparent 0%, #000 30%, #000 90%, transparent 100%),
+                          linear-gradient(180deg, transparent 0%, #000 6%, #000 80%, transparent 100%);
+      -webkit-mask-composite: source-in;
+              mask-composite: intersect;
     }
     /* 文字は写真より前に出す（::after より上） */
     .hero.has-photo .hero-inner { z-index: 2; }
     /* 「対応エリア」から下を下げて、わんちゃんと猫ちゃんの顔が見える空きをつくる */
     .has-photo .hero-area { margin-top: 74px; }
+  }
+  /* タブレット縦（スライドが下に回る幅・文字の列は560px）：文字の右があくので、2匹を右へ寄せる */
+  @media (min-width: 721px) and (max-width: 918px) {
+    .hero.has-photo::after { --ml: max(20px, calc((100% - 560px) / 2)); --cx: 240px; --py: -23px; }
+  }
+  /* 1400px以上（文字の列は最大1400px）：説明文の右に猫ちゃん、その右にわんちゃんを並べる */
+  @media (min-width: 1400px) {
+    .hero.has-photo::after { --ml: max(20px, calc((100% - 1400px) / 2)); --ih: 519px; --cx: 415px; --py: 25px; }
   }
   /* 写真の明るい部分（わんちゃんの毛など）に文字が重なっても読めるよう、
      白いにじみを重ねて文字のまわりだけ明るくする */

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- ▼ Google広告の計測タグ（AW-18467289034）。電話番号とLINEのタップを成果として数える。2ページとも同じものを置く ▼ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18467289034"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-18467289034');
+var GA4_ID = 'G-3G3HV921KN'; // Googleアナリティクス（2026/10/18）。広告以外から来た人の電話・LINEのタップも、入口つきで数える
+// 見た時刻（日本時間の「13:42」）。GA4の画面は時の単位までしか出ないので、着信時刻と分で突き合わせるために全部の記録に付ける（2026/11/9）
+function jstHm(){ try { return new Date().toLocaleTimeString('ja-JP', {timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', hour12: false}); } catch (e) { var d = new Date(); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); } }
+gtag('config', GA4_ID, {'jst_hm': jstHm()});
+var ADS_TEL_LABEL = 'I-BoCOu8_o0dEMrv8eVE'; // Google広告の「コンバージョン」で作った成果のラベル（空のあいだは送らない）
+var ADS_LINE_LABEL = '7w-RCP2F8JsdEMrv8eVE'; // 成果「HP LINEタップ」のラベル（空のあいだは送らない）
+document.addEventListener('click', function(e){
+  var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+  if (a && ADS_TEL_LABEL) gtag('event', 'conversion', {'send_to': 'AW-18467289034/' + ADS_TEL_LABEL});
+  if (a) gtag('event', 'tel_tap', {'send_to': GA4_ID, 'jst_hm': jstHm()});
+  var l = e.target.closest ? e.target.closest('a[href*="lin.ee/"]') : null;
+  if (l && ADS_LINE_LABEL) gtag('event', 'conversion', {'send_to': 'AW-18467289034/' + ADS_LINE_LABEL});
+  if (l) gtag('event', 'line_tap', {'send_to': GA4_ID, 'jst_hm': jstHm()});
+});
+// どこまで読まれたか（2026/11/9）。各まとまり（section）の上の端が画面の上6割に入ったら、1回だけ section_view を送る（例 '04_prices'＝上から4番目の料金表。最初の画面＝ヒーローは数えない）。
+// 料金表は「本気で探している人」の目印として price_view も送る。見た目は何も変わらない
+document.addEventListener('DOMContentLoaded', function(){
+  if (!('IntersectionObserver' in window)) return;
+  var secs = document.querySelectorAll('section[id]'), name = {}, sent = {};
+  for (var i = 0; i < secs.length; i++) name[secs[i].id] = (i < 9 ? '0' : '') + (i + 1) + '_' + secs[i].id;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      var id = en.target.id;
+      if (!en.isIntersecting || sent[id]) return;
+      sent[id] = 1; io.unobserve(en.target);
+      gtag('event', 'section_view', {'send_to': GA4_ID, 'section': name[id], 'jst_hm': jstHm()});
+      if (id === 'prices') gtag('event', 'price_view', {'send_to': GA4_ID, 'jst_hm': jstHm()});
+    });
+  }, {rootMargin: '0px 0px -40% 0px'});
+  for (var j = 0; j < secs.length; j++) io.observe(secs[j]);
+});
+</script>
+<!-- ▲ Google広告の計測タグ ここまで ▲ -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="../favicon.png">
+<meta name="description" content="宇美町の訪問ペット火葬「そら色」。火葬設備を積んだ専用車でご自宅へお伺いし、住み慣れた場所でお見送りいただけます。50kgまでの大型犬に対応、24時間365日受付。料金は体重とプランで決まり、お伺いする前にお電話で総額をお伝えします。">
+<link rel="stylesheet" href="../style.css?v=20261118">
+<link rel="canonical" href="https://pet-kasou-sorairo.com/umi/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="訪問ペット葬儀 そら色">
+<meta property="og:title" content="宇美町の訪問ペット火葬｜訪問ペット葬儀 そら色">
+<meta property="og:description" content="火葬設備を積んだ専用車で、宇美町のご自宅までお伺いします。50kgまでの大型犬に対応。24時間365日受付・通話無料 0120-050-221">
+<meta property="og:url" content="https://pet-kasou-sorairo.com/umi/">
+<meta property="og:image" content="https://pet-kasou-sorairo.com/slide-1.jpg">
+<meta property="og:image:width" content="1100">
+<meta property="og:image:height" content="614">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<title>訪問ペット火葬・ペット葬儀なら そら色｜宇美町へお伺いします</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://pet-kasou-sorairo.com/umi/#service",
+      "name": "宇美町の訪問ペット火葬",
+      "serviceType": "訪問ペット火葬・供養",
+      "description": "火葬設備を積んだ専用車でご自宅までお伺いする訪問ペット火葬。50kgまでの大型犬に対応。24時間365日受付。",
+      "provider": { "@id": "https://pet-kasou-sorairo.com/#organization" },
+      "url": "https://pet-kasou-sorairo.com/umi/",
+      "areaServed": [
+        { "@type": "City", "name": "福岡県糟屋郡宇美町" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "訪問ペット葬儀 そら色", "item": "https://pet-kasou-sorairo.com/" },
+        { "@type": "ListItem", "position": 2, "name": "宇美町", "item": "https://pet-kasou-sorairo.com/umi/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- ===== ヘッダー ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <p class="header-title-sp serif">訪問ペット葬儀</p>
+    <p class="header-area-sp"><span class="tag">対応エリア</span>福岡県（宇美町）</p>
+    <div class="header-main-row">
+    <a class="brand" href="../" aria-label="訪問ペット葬儀 そら色 トップへ">
+      <span class="brand-mark">
+        <img src="../logo.jpg" alt="そら色ロゴ" width="52" height="52">
+      </span>
+      <span class="brand-text">
+        <span class="brand-small">訪問ペット葬儀</span>
+        <span class="brand-name">そら色</span>
+      </span>
+    </a>
+    <a class="header-tel" href="tel:0120-050-221">
+      <span class="tel-note">通話無料・24時間365日受付</span>
+      <span class="tel-num">0120-050-221</span>
+    </a>
+    </div>
+    <nav class="site-nav" aria-label="サイト内メニュー">
+      <ul>
+        <li><a href="#plans">料金・プラン</a></li>
+        <li><a href="#care">ペットのご安置</a></li>
+        <li class="nav-sub"><a href="#car">火葬車について</a></li>
+        <li class="nav-sub"><a href="#pets">対応できるペット</a></li>
+        <li class="nav-sub"><a href="#flow">ご葬儀の流れ</a></li>
+        <li class="nav-pc"><a href="#umi-area">対応エリア</a></li>
+        <li class="nav-sub"><a href="#umi-worry">よくあるご不安</a></li>
+        <li><a href="#umi-faq">よくあるご質問</a></li>
+        <li class="nav-sub"><a href="#cancel">キャンセルについて</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== ヒーロー ===== -->
+<div class="hero has-photo" id="top">
+  <div class="cloud c1" aria-hidden="true"></div>
+  <div class="cloud c2" aria-hidden="true"></div>
+  <div class="cloud c3" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-main">
+      <p class="hero-brand serif">いつもの場所から、空へ。</p>
+      <h1 class="hero-lead serif">慌てなくて、大丈夫です。</h1>
+      <p class="hero-promise"><span class="nb">何をしてあげればいいか</span><span class="nb">分からない方も、</span><br><span class="nb">お電話でひとつずつ</span><span class="nb">ご案内します。</span></p>
+      <p class="hero-area"><span class="tag">対応エリア</span><span class="area-tx">福岡県<br>（宇美町）</span></p>
+      <p class="hero-sub">宇美町の訪問ペット火葬。<br>火葬車で、ご自宅までお伺いし火葬いたします。</p>
+      <span class="hero-strong">
+        <span class="hs-badge" aria-hidden="true">
+          <span class="hs-ribbon">大型犬対応</span>
+          <img src="../dog-badge.jpg" width="320" height="320" alt="">
+        </span>
+        <span class="hs-body">
+          <span class="big">50kgまでの大型犬も<br class="br-sp">お見送りできます</span>
+          <span class="small"><span class="nb">大型のわんちゃんに対応できる</span><span class="nb">訪問火葬車は多くありません。</span></span>
+        </span>
+      </span>
+      <div class="hero-cta">
+        <a class="btn-tel" href="tel:0120-050-221">
+          <span class="l1">通話無料・24時間受付</span>
+          <span class="l2">0120-050-221</span>
+        </a>
+        <a class="btn-ghost" href="#prices">料金表を見る</a>
+      </div>
+    </div>
+    <div class="hero-slides">
+      <p class="slide-lead-in">お電話の前にご自宅でしてあげられること</p>
+      <div class="slideshow" id="careSlides" aria-roledescription="スライドショー" aria-label="ご自宅での安置手順">
+        <div class="slide-stage">
+        <figure class="slide is-lead is-active" data-sec="6">
+          <div class="slide-art"><img src="../slide-1.jpg" width="1100" height="614" fetchpriority="high" decoding="async" alt="窓辺のマットで安らかに眠るゴールデンレトリバー"></div>
+          <figcaption class="slide-cap">
+            <p class="slide-step">はじめに</p>
+            <h3>ご自宅でしてあげられること</h3>
+            <p><span class="nb">お迎えの日まで、</span><span class="nb">きれいなお姿を保つ方法を</span><span class="nb">ご案内します。</span></p>
+          </figcaption>
+        </figure>
+
+        <figure class="slide  " data-sec="11">
+          <div class="slide-art"><img src="../slide-2.jpg" width="1100" height="614" loading="lazy" decoding="async" alt="わんちゃんの手足をやさしく胸元へ寄せているところ"></div>
+          <figcaption class="slide-cap">
+            <p class="slide-step">STEP 1</p>
+            <h3>手足を胸元へ寄せ、自然なお姿に</h3>
+            <p><span class="nb">硬直が始まる前に、</span><span class="nb">眠っているときの体勢へ。</span><br><span class="nb">目や口も、やさしく</span><span class="nb">閉じてあげてください。</span></p>
+          </figcaption>
+        </figure>
+
+        <figure class="slide  " data-sec="11">
+          <div class="slide-art"><img src="../slide-3.jpg" width="1100" height="614" loading="lazy" decoding="async" alt="濡らしたタオルでわんちゃんのお体をやさしく拭いているところ"></div>
+          <figcaption class="slide-cap">
+            <p class="slide-step">STEP 2</p>
+            <h3>濡れタオルで、やさしく清拭</h3>
+            <p><span class="nb">毛並みを整え、清潔に保ちます。</span><span class="nb">体液が出るのは自然なことです。</span><br><span class="nb">ガーゼをそっと添えてください。</span></p>
+          </figcaption>
+        </figure>
+
+        <figure class="slide  " data-sec="12">
+          <div class="slide-art"><img src="../slide-4.jpg" width="1100" height="614" loading="lazy" decoding="async" alt="お箱の断面図。下からお箱・アルミホイル・ダンボール・ペットシート・ふかふかのタオルの順に重ねる"></div>
+          <figcaption class="slide-cap">
+            <p class="slide-step">STEP 3</p>
+            <h3>二重断熱の「お床」をつくる</h3>
+            <p><span class="nb">お箱の底に</span><span class="nb"><strong>アルミホイル、ダンボールの順</strong>に敷いて</span><span class="nb">床の熱をさえぎり、</span><span class="nb">上にペットシートと</span><span class="nb">タオルを重ねます。</span></p>
+          </figcaption>
+        </figure>
+
+        <figure class="slide  " data-sec="11">
+          <div class="slide-art"><img src="../slide-5.jpg" width="1100" height="614" loading="lazy" decoding="async" alt="タオルで包んだ保冷剤をわんちゃんの頭・首元・お腹に添えているところ"></div>
+          <figcaption class="slide-cap">
+            <p class="slide-step">STEP 4</p>
+            <h3>お腹・頭・首元を冷やす</h3>
+            <p><span class="nb">冷房の効いたお部屋で、</span><span class="nb"><span class="warn">かならずタオルで包んだ</span>保冷剤を添え、</span><span class="nb">上からバスタオルを。</span><span class="nb">2時間おきを目安に</span><span class="nb">取り替えてください。</span></p>
+          </figcaption>
+        </figure>
+
+        <figure class="slide is-end " data-sec="8">
+          <div class="slide-art"><img src="../slide-6.jpg" width="1100" height="614" loading="lazy" decoding="async" alt="お花に囲まれ、白い布をかけて眠るわんちゃんに手を合わせているところ"></div>
+          <figcaption class="slide-cap">
+            <p class="slide-step">おわりに</p>
+            <h3>迷ったら迷わずお電話ください</h3>
+            <p><span class="nb">何をすれば良いか分からない状態でも</span><span class="nb">大丈夫です。</span><br><span class="nb">24時間365日、</span><span class="nb">いつでもご相談ください。</span></p>
+          </figcaption>
+        </figure>
+
+        <figure class="slide is-summary" data-sec="10">
+          <figcaption class="slide-cap slide-summary">
+            <p class="slide-step">まとめ</p>
+            <h3>ご自宅でしてあげられる<br class="br-sp">4つのこと</h3>
+            <ol class="sum-list">
+              <li><b>1</b><span>手足を胸元へ寄せ、自然なお姿に</span></li>
+              <li><b>2</b><span>濡れタオルで、やさしく清拭</span></li>
+              <li><b>3</b><span>二重断熱の「お床」をつくる</span></li>
+              <li><b>4</b><span>お腹・頭・首元を冷やす</span></li>
+            </ol>
+            <a class="btn-tel sum-tel" href="tel:0120-050-221">
+              <span class="l1">24時間受付・通話無料</span>
+              <span class="l2">0120-050-221</span>
+            </a>
+          </figcaption>
+        </figure>
+      </div>
+        <div class="slide-bar"><span class="slide-progress"></span></div>
+        <span class="sc-count"><span class="sc-now">1</span> / 7</span>
+        <button type="button" class="slide-play" aria-label="スライドショーを見る">
+          <span class="sp-ico" aria-hidden="true">▶</span>
+          <span class="sp-txt">スライドを見る</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 選ばれる理由 ===== -->
+<section class="reasons" id="reasons">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">そら色が選ばれる理由</h2>
+    </div>
+    <div class="chain">
+      <p class="chain-title serif">お電話から、ご供養まで。<br class="br-sp">ぜんぶ、同じ手で。</p>
+      <ol class="chain-steps">
+        <li>
+          <span class="chain-ic"><svg class="ic2" viewBox="0 0 40 40" aria-hidden="true"><path class="f" d="M11.2 7.6c1-.6 2.3-.3 3 .7l2.6 4c.6.9.5 2.1-.3 2.9l-1.9 1.9c1.4 2.9 3.6 5.1 6.5 6.5l1.9-1.9c.8-.8 2-.9 2.9-.3l4 2.6c1 .7 1.3 2 .7 3l-1.3 2.2c-.9 1.5-2.6 2.3-4.3 1.9C15.4 29 9.3 22.9 7.2 13.3c-.4-1.7.4-3.4 1.9-4.3z"/><path class="s" d="M23.5 6.5a10.5 10.5 0 0110 10M23.5 11.5a5.5 5.5 0 015 5"/></svg></span>
+          <span class="chain-tx">お電話</span>
+        </li>
+        <li class="chain-arrow" aria-hidden="true"></li>
+        <li>
+          <span class="chain-ic"><svg class="ic2" viewBox="0 0 40 40" aria-hidden="true"><path class="f" d="M3.5 27.5V17c0-.9.4-1.7 1.1-2.3l5-3.9c.6-.5 1.4-.8 2.2-.8h17.7c2.5 0 4.5 2 4.5 4.5v13z"/><path class="w" d="M11 13.5h6.5v4.5H6.5zM20 13.5h5.5v4.5H20z"/><path class="w" d="M28.6 20.6c-.9-1.6-3.3-1-3.3.8 0 1.4 1.9 2.6 3.3 3.6 1.4-1 3.3-2.2 3.3-3.6 0-1.8-2.4-2.4-3.3-.8z"/><circle class="f" cx="11" cy="28.5" r="3.6"/><circle class="w" cx="11" cy="28.5" r="1.4"/><circle class="f" cx="27.5" cy="28.5" r="3.6"/><circle class="w" cx="27.5" cy="28.5" r="1.4"/></svg></span>
+          <span class="chain-tx">ご訪問・ご火葬</span>
+        </li>
+        <li class="chain-arrow" aria-hidden="true"></li>
+        <li>
+          <span class="chain-ic"><svg class="ic2" viewBox="0 0 40 40" aria-hidden="true"><rect class="f" x="14" y="6" width="12" height="4" rx="1.6"/><path class="f" d="M13.5 11.5h13c2.8 2.6 4.5 5.9 4.5 9.6 0 5.8-4.9 9.9-11 9.9s-11-4.1-11-9.9c0-3.7 1.7-7 4.5-9.6z"/><path class="w" d="M20 18.6c-1.3-2.3-4.8-1.5-4.8 1.1 0 2 2.7 3.8 4.8 5.3 2.1-1.5 4.8-3.3 4.8-5.3 0-2.6-3.5-3.4-4.8-1.1z"/></svg></span>
+          <span class="chain-tx">ご返骨・ご供養</span>
+        </li>
+      </ol>
+      <p class="chain-note"><span class="nb">お電話で伺ったことは、</span><span class="nb">当日の現場までそのまま届きます。</span><br><span class="nb">同じお話を、</span><span class="nb">何度もしていただかなくて大丈夫です。</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ごあいさつ ===== -->
+<section class="greeting" id="umi-greeting">
+  <div class="wrap">
+    <div class="greet-box">
+      <figure class="greet-photo">
+        <img src="../daihyo.jpg" width="1000" height="750" loading="lazy" decoding="async" alt="訪問ペット葬儀 そら色 代表 宇都宮 敏隆">
+      </figure>
+      <div class="greet-body">
+        <h2 class="greet-title serif"><span class="nb">はじめまして。</span><span class="nb">代表の宇都宮です。</span></h2>
+        <p>お電話をお受けするのも、お伺いしてご火葬・ご供養をするのも、私どもです。受付だけの係はおりません。</p>
+        <p>はじめてのお別れは、何をすればよいか分からないものだと思います。お電話をいただいたその場で、ご安置の仕方や、お迎えまでにしてあげられることをお伝えします。</p>
+        <p><strong>24時間365日、いつでもご相談を。</strong>お別れは時間を選びません。深夜・早朝でもお電話をお受けしています。まだお決まりでなくても、「これからどうすれば」というご相談だけでもかまいません。</p>
+        <p>急がず、ご家族のお時間に合わせてお見送りいたします。</p>
+        <p class="greet-name">訪問ペット葬儀 そら色<br class="br-sp">　代表　<b>宇都宮 敏隆</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== プラン ===== -->
+<section id="plans">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">3つのご供養プラン</h2>
+      <p class="sec-note">ご家族のお気持ちとご都合に合わせて、3つのプランからお選びいただけます。</p>
+    </div>
+    <div class="plan-grid">
+      <div class="plan-card">
+        <h3 class="plan-name">お引き取り<wbr>供養</h3>
+        <p class="plan-tag">ご火葬・ご供養までお任せいただくプラン</p>
+        <p class="plan-price"><span class="num">9,900</span><span class="unit">円<span class="sp-hide">（税込）</span>〜</span></p>
+        <p class="plan-desc">ご自宅までお伺いしてお子さまをお預かりし、責任をもってご火葬・ご供養いたします。お仕事などでお時間が取れない方、お骨のお戻しを望まれない方に。</p>
+        <ul class="plan-feats">
+          <li><span><span class="sp-hide">ご自宅への</span>お迎え</span><span class="ok">○</span></li>
+          <li><span>ご返骨</span><span class="no">−</span></li>
+          <li><span>お立会い<span class="sp-hide">・お骨上げ</span></span><span class="no">−</span></li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <h3 class="plan-name">一任火葬</h3>
+        <p class="plan-tag">ご火葬はお任せ・ご遺骨はお手元に</p>
+        <p class="plan-price"><span class="num">12,900</span><span class="unit">円<span class="sp-hide">（税込）</span>〜</span></p>
+        <p class="plan-desc">ご火葬は当方にお任せいただき、ご火葬後にご遺骨を骨壺に納めてお返しいたします。お立会いは難しいけれど、お骨は手元に残したいという方に。</p>
+        <ul class="plan-feats">
+          <li><span><span class="sp-hide">ご自宅への</span>お迎え</span><span class="ok">○</span></li>
+          <li><span>ご返骨</span><span class="ok">○</span></li>
+          <li><span>お立会い<span class="sp-hide">・お骨上げ</span></span><span class="no">−</span></li>
+        </ul>
+      </div>
+      <div class="plan-card featured">
+        <span class="plan-badge">いちばん<wbr>選ばれています</span>
+        <h3 class="plan-name">立会火葬</h3>
+        <p class="plan-tag">最後までご家族の手でお見送り</p>
+        <p class="plan-price"><span class="num">15,900</span><span class="unit">円<span class="sp-hide">（税込）</span>〜</span></p>
+        <p class="plan-desc">ご自宅の前などでお別れからご火葬までお立会いいただき、ご家族の手でお骨上げをしてご遺骨をお納めいただけます。人のご葬儀と同じように見送りたい方に。</p>
+        <ul class="plan-feats">
+          <li><span><span class="sp-hide">ご自宅への</span>お迎え</span><span class="ok">○</span></li>
+          <li><span>ご返骨</span><span class="ok">○</span></li>
+          <li><span>お立会い<span class="sp-hide">・お骨上げ</span></span><span class="ok">○</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 料金表 ===== -->
+<section class="prices" id="prices">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">料金表</h2>
+      <p class="sec-note">体重に応じた明朗料金です。</p>
+    </div>
+    <div class="pick-box">
+      <p class="pick-q">ペットちゃんの体重を選んでください</p>
+      <div class="pick-weights" role="group" aria-label="体重"></div>
+      <p class="pick-now"><b></b></p>
+      <div class="pick-cards">
+        <div class="pick-card"><p class="pc-name">お引き取り供養</p><p class="pc-sub">返骨なし</p><p class="pc-yen"><b></b>円</p><p class="pc-inc" aria-hidden="true">&nbsp;</p></div>
+        <div class="pick-card"><p class="pc-name">一任火葬</p><p class="pc-sub">返骨あり</p><p class="pc-yen"><b></b>円</p><p class="pc-inc"><span class="nb">骨壺・</span><span class="nb">骨袋込み</span></p></div>
+        <div class="pick-card on"><span class="pc-badge"><span class="nb">いちばん</span><span class="nb">選ばれています</span></span><p class="pc-name">立会火葬</p><p class="pc-sub">お立会い・<wbr>お骨上げ</p><p class="pc-yen"><b></b>円</p><p class="pc-inc"><span class="nb">骨壺・</span><span class="nb">骨袋込み</span></p></div>
+      </div>
+    </div>
+    <details class="pick-all"><summary>すべての料金を表で見る</summary>
+    <div class="table-scroll">
+      <table class="price">
+        <thead>
+          <tr>
+            <th>体重の目安</th>
+            <th>お引き取り供養<small>返骨なし</small></th>
+            <th>一任火葬<small>返骨あり</small></th>
+            <th>立会火葬<small>お立会い・<wbr>お骨上げ</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="weight">500g以下</td><td>9,900円</td><td>12,900円</td><td>15,900円</td></tr>
+          <tr><td class="weight">500g超〜1kg</td><td>13,200円</td><td>16,200円</td><td>19,200円</td></tr>
+          <tr><td class="weight">1kg超〜3kg</td><td>17,600円</td><td>20,600円</td><td>23,600円</td></tr>
+          <tr><td class="weight">3kg超〜6kg</td><td>22,000円</td><td>25,000円</td><td>28,000円</td></tr>
+          <tr><td class="weight">6kg超〜9kg</td><td>25,000円</td><td>28,000円</td><td>31,000円</td></tr>
+          <tr><td class="weight">9kg超〜12kg</td><td>29,000円</td><td>32,000円</td><td>35,000円</td></tr>
+          <tr><td class="weight">12kg超〜15kg</td><td>33,000円</td><td>36,000円</td><td>39,000円</td></tr>
+          <tr><td class="weight">15kg超〜20kg</td><td>39,000円</td><td>42,000円</td><td>45,000円</td></tr>
+          <tr><td class="weight">20kg超〜25kg</td><td>46,500円</td><td>49,500円</td><td>52,500円</td></tr>
+          <tr><td class="weight">25kg超〜30kg</td><td>54,000円</td><td>57,000円</td><td>60,000円</td></tr>
+          <tr><td class="weight">30kg超〜35kg</td><td>61,500円</td><td>64,500円</td><td>67,500円</td></tr>
+          <tr><td class="weight">35kg超〜40kg</td><td>69,000円</td><td>72,000円</td><td>75,000円</td></tr>
+          <tr><td class="weight">40kg超〜45kg</td><td>76,500円</td><td>79,500円</td><td>82,500円</td></tr>
+          <tr><td class="weight">45kg超〜50kg</td><td>84,000円</td><td>87,000円</td><td>90,000円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    </details>
+    <ul class="price-notes">
+      <li>料金はすべて税込です。</li>
+      <li>深夜・早朝（22:00〜翌6:00）のご火葬は基本料金の20%増しとなります。</li>
+      <li>対応できる体重の上限は50kgです。</li>
+      <li>料金には、骨壺・骨袋（一任火葬・立会火葬）、お骨上げの道具（立会火葬）、お線香をあげていただく簡易の祭壇が含まれています。お供えのお花は含まれませんので、いっしょに送ってあげたいお花があればご用意ください。</li>
+      <li><strong>お伺いする前に、お電話で総額をお伝えします。</strong>当日に体重を確認して料金が変わる場合も、ご火葬の前に必ずお伝えし、ご了承いただいてから進めます。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 火葬車について ===== -->
+<section class="car" id="car">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">火葬車について</h2>
+      <p class="sec-note">ご自宅の前が、その子だけの葬儀場になります。</p>
+    </div>
+    <div class="car-photos">
+      <figure>
+        <img src="../car.jpg" width="1000" height="750" loading="lazy" decoding="async" alt="ご自宅の前に停めた訪問火葬の専用車。後部を開けて祭壇を整えているところ">
+        <figcaption>ご自宅の前に専用車を停め、<br class="br-sp">祭壇を整えてお迎えします。</figcaption>
+      </figure>
+      <figure>
+        <img src="../car-inside.jpg" width="783" height="560" loading="lazy" decoding="async" alt="専用車に積んだ火葬炉。引き出し式の台にお寝かせしてご火葬します">
+        <figcaption>50kgまでの大型犬に対応できる火葬炉を積んでいます。<br>「大型犬は断られてしまった」という方も、あきらめずにご相談ください。</figcaption>
+      </figure>
+    </div>
+    <div class="car-grid">
+      <div class="car-card">
+        <h3>ご近所に配慮した設計</h3>
+        <p>煙やにおいが出にくい構造の火葬炉を搭載した専用車です。外からは火葬車と分かりにくい外観で、ご近所の目が気になる方も安心してご利用いただけます。</p>
+      </div>
+      <div class="car-card">
+        <h3>ご自宅のそばでお見送り</h3>
+        <p>ご自宅の駐車場や近隣の安全な場所でご火葬できますので、移動の負担がなく、住み慣れた場所からお見送りいただけます。</p>
+      </div>
+      <div class="car-card">
+        <h3>ご遺骨をきれいに残せる火葬炉</h3>
+        <p>温度管理のできる火葬炉で、お身体の大きさに合わせて丁寧にご火葬します。お骨上げができるよう、ご遺骨をきれいに残すことを大切にしています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ペットのご安置 ===== -->
+<section id="care">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title"><span class="nb">ペットのご安置・</span><span class="nb">保存の方法</span></h2>
+      <p class="sec-note">お迎えの日まで、きれいな状態で過ごさせて<br class="br-sp">あげるための方法です。<br class="br-pc">お電話でも丁寧に<br class="br-sp">ご案内しますので、慌てずにご連絡ください。</p>
+    </div>
+
+    <p class="care-lead"><strong>ご火葬は、今日でなくても大丈夫です。</strong><br>今夜はご家族でゆっくりお別れをして、<br class="br-sp">明日以降にご火葬することもできます。</p>
+
+    <div class="care-grid">
+      <div class="care-card">
+        <img class="care-img" src="../slide-2.jpg" width="1100" height="614" loading="lazy" decoding="async" alt="わんちゃんの手足をやさしく胸元へ寄せているところ">
+        <h3>身体をやさしく整える</h3>
+        <p>亡くなってから2〜3時間で身体が硬くなりはじめます。硬くなる前に、手足をやさしくお腹の方へ折りたたみ、まぶたを閉じてあげてください。濡らしたタオルやガーゼで身体を拭いてあげましょう。</p>
+      </div>
+      <div class="care-card">
+        <img class="care-img" src="../slide-4.jpg" width="1100" height="614" loading="lazy" decoding="async" alt="お箱の断面図。下からお箱・アルミホイル・ダンボール・ペットシート・ふかふかのタオルの順に重ねる">
+        <h3>箱やかごに寝かせる</h3>
+        <p>タオルやペットシーツを敷いた箱・かごに寝かせてあげてください。お気に入りの毛布があれば、いっしょに掛けてあげると安らかな姿になります。</p>
+      </div>
+      <div class="care-card">
+        <img class="care-img" src="../slide-5.jpg" width="1100" height="614" loading="lazy" decoding="async" alt="タオルで包んだ保冷剤をわんちゃんの頭・首元・お腹に添えているところ">
+        <h3>保冷剤で冷やす</h3>
+        <p>冷房の効いたお部屋で、タオルにくるんだ保冷剤や氷を、お腹と頭のまわりに当てて冷やしてください。傷みやすいお腹を中心に冷やすのがポイントです。保冷剤は2時間おきを目安に取り替えてあげてください。</p>
+      </div>
+      <div class="care-card">
+        <img class="care-img" src="../slide-6.jpg" width="1100" height="614" loading="lazy" decoding="async" alt="お花に囲まれ、白い布をかけて眠るわんちゃんに手を合わせているところ">
+        <h3>涼しい場所にご安置</h3>
+        <p>直射日光の当たらない、涼しいお部屋にご安置ください。エアコンのある部屋なら設定温度を低めにしていただくと安心です。</p>
+      </div>
+    </div>
+    <p class="care-note"><strong>ご安置できる日数の目安</strong>：しっかり保冷した状態で、夏場はおよそ1〜2日、冬場はおよそ2〜4日が目安です。ご事情によりお日にちが空く場合も、対処方法をご案内しますのでお気軽にお電話ください。</p>
+  </div>
+</section>
+
+<!-- ===== 対応できるペット ===== -->
+<section id="pets">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title"><span class="nb">火葬できる</span><span class="nb">ペットちゃん一覧</span></h2>
+    </div>
+    <ul class="pets-list">
+      <li>犬<small>小型犬〜50kgの大型犬</small></li>
+      <li>猫</li>
+      <li>うさぎ</li>
+      <li>ハムスター</li>
+      <li>小鳥<small>インコ・文鳥など</small></li>
+      <li>フェレット</li>
+      <li>モルモット</li>
+      <li>ハリネズミ</li>
+      <li>爬虫類<small>カメ・トカゲなど</small></li>
+    </ul>
+    <p class="pets-note">上記にないどうぶつも、お見送りできる場合がございます。まずはお電話でご相談ください。</p>
+  </div>
+</section>
+
+<!-- ===== 流れ ===== -->
+<section class="prices" id="flow">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">ご葬儀の流れ</h2>
+    </div>
+    <div class="fz">
+      <div class="fz-plans"><p>お引き取り<wbr>供養</p><p>一任火葬</p><p class="on">立会火葬</p></div>
+      <p class="fz-all">お電話・ご相談</p>
+      <p class="fz-all">ご自宅へお伺い</p>
+      <p class="fz-all">お別れのお時間</p>
+      <div class="fz-cols">
+        <ol><li>お預かり</li><li>合同火葬</li><li>ご供養<small>合同墓地へ埋葬<wbr>または散骨</small></li></ol>
+        <ol><li>ご火葬</li><li>お骨上げ<small>スタッフが</small></li><li>ご返骨<small>骨壺に納めて<wbr>お渡し</small></li></ol>
+        <ol class="on"><li>ご火葬<small>お立会い</small></li><li>お骨上げ<small>ご家族の手で</small></li><li>お持ち帰り<small>骨壺に納めて</small></li></ol>
+      </div>
+      <p class="fz-note"><span class="nb">一任火葬・立会火葬のご火葬は、</span><span class="nb">ご自宅の前か、</span><span class="nb">近くの安全な場所で行います。</span></p>
+    </div>
+    <details class="pick-all flow-more"><summary>くわしく見る</summary>
+    <ol class="flow-list">
+      <li class="flow-item">
+        <span class="flow-num" aria-hidden="true"></span>
+        <div class="flow-body">
+          <h3>お電話でご相談ください</h3>
+          <p><a href="tel:0120-050-221" class="tel-inline">0120-050-221</a>に24時間いつでもお電話ください。<br>お子さまの種類・体重、ご希望のプランやお日にちをお伺いします。ご相談だけでもかまいません。</p>
+        </div>
+      </li>
+      <li class="flow-item">
+        <span class="flow-num" aria-hidden="true"></span>
+        <div class="flow-body">
+          <h3>日時とプランの決定</h3>
+          <p>ご都合に合わせてお伺いの日時を決め、体重に応じた料金を事前にはっきりお伝えします。<br>当日までのご安置の方法もご案内いたします。</p>
+        </div>
+      </li>
+      <li class="flow-item">
+        <span class="flow-num" aria-hidden="true"></span>
+        <div class="flow-body">
+          <h3>ご自宅へお伺い</h3>
+          <p>お約束の日時に、火葬設備を備えた専用車でご自宅までお伺いします。</p>
+        </div>
+      </li>
+      <li class="flow-item">
+        <span class="flow-num" aria-hidden="true"></span>
+        <div class="flow-body">
+          <h3>お別れのお時間</h3>
+          <p>ご火葬の前に、ゆっくりとお別れのお時間をお取りいただけます。<br>お花やお手紙など、いっしょに送ってあげたいものがあればご用意ください。</p>
+        </div>
+      </li>
+      <li class="flow-item">
+        <span class="flow-num" aria-hidden="true"></span>
+        <div class="flow-body">
+          <h3>ご火葬</h3>
+          <p>心を込めてご火葬いたします。立会火葬ではご家族にお立会いいただけます。</p>
+        </div>
+      </li>
+      <li class="flow-item">
+        <span class="flow-num" aria-hidden="true"></span>
+        <div class="flow-body">
+          <h3>ご返骨・ご供養</h3>
+          <p>立会火葬ではご家族の手でお骨上げを、一任火葬ではご火葬後に骨壺に納めてご返骨いたします。お引き取り供養でお預かりしたご遺骨は、当方が責任をもってお預かりし、半年に一度、合同墓地へのご埋葬または散骨により、心を込めてご供養いたします。廃棄物として処分することは決してございません。</p>
+        </div>
+      </li>
+    </ol>
+    </details>
+  </div>
+</section>
+
+<!-- ===== 宇美町の対応エリア ===== -->
+<section class="area" id="umi-area">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">宇美町の<br class="br-sp">対応エリア</h2>
+      <p class="sec-note">宇美町へ、ご予約に合わせてお伺いします。</p>
+    </div>
+    <div class="area-box">
+      <p class="area-main">宇美町に<span class="nb">お伺いします</span></p>
+      <ul class="area-pref">
+        <li>宇美町</li>
+      </ul>
+      <p style="margin-top:18px">近くの市町村のページ：<a href="../kasuya-gun/">粕屋町・志免町・篠栗町・須恵町</a>・<a href="../onojo/">大野城市</a>・<a href="../chikushino/">筑紫野市・太宰府市</a><br>そのほかの地域は、<a href="../#area">そら色全体の対応エリア</a>をご覧ください。</p>
+
+      <div class="bases">
+        <div class="base-card">
+          <p class="base-name">山あいのご自宅にも</p>
+          <p>道の様子や、車を停められる場所をお電話でお聞きしてからお伺いします。ご自宅の前が難しい場合は、近くの広い場所を一緒に考えます。</p>
+        </div>
+        <div class="base-card is-new">
+          <p class="base-name">ご訪問はご予約制です</p>
+          <p>ご希望の日時をお電話でお伺いし、<strong>いちばん早くお伺いできるお時間をその場でご案内します</strong>。ご自宅の場所や駐車のことも、あわせてご相談ください。</p>
+          <p class="base-cover">前日までのご予約がおすすめですが、当日でも空いていればお伺いできます。まずはお電話ください。</p>
+        </div>
+      </div>
+
+      <p style="margin-top:18px">上記以外の地域も、お伺いできる場合がございます。まずはお電話でご相談ください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 宇美町でお見送りをお考えの方へ ===== -->
+<section class="reasons" id="umi-worry">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">宇美町で<br class="br-sp">お見送りをお考えの方へ</h2>
+      <p class="sec-note">住み慣れたご自宅で、<br class="br-sp">安心してお見送りいただけます。</p>
+    </div>
+    <div class="reason-grid">
+      <div class="reason-card">
+        <h3>宇美町まで<br>来てもらえますか</h3>
+        <p>はい、宇美町へお伺いしています。その日のご予約の状況によってお時間が変わりますので、<strong>お電話をいただいた時点で、いちばん早くお伺いできるお時間をお伝えします</strong>。お迎えまでのご安置の方法も、お電話でご案内いたします。</p>
+      </div>
+      <div class="reason-card">
+        <h3>お骨のお戻しは<br>いらないのですが</h3>
+        <p>お引き取り供養をお選びいただけます。ご自宅までお伺いしてお子さまをお預かりし、ご火葬のあと、半年に一度、合同墓地へのご埋葬または散骨により、心を込めてご供養いたします。宇美町でも、お引き取り供養でねこちゃんをお預かりしました。</p>
+      </div>
+      <div class="reason-card">
+        <h3>山あいの家で、<br>道が細いのですが</h3>
+        <p>ご予約のお電話のときに、道の様子や車を停められる場所をお聞かせください。ご自宅の前が難しい場合は、近くの広い場所など、停められる場所を一緒に考えます。お庭や敷地の広いお宅では、敷地の中でご火葬いただくこともできます。</p>
+      </div>
+      <div class="reason-card">
+        <h3>犬の届け出は<br>どうすれば</h3>
+        <p>登録している犬が亡くなったときは、町への届出が必要です。窓口と届け方を、このページの下の「<a href="#umi-proc">宇美町での手続き</a>」にまとめました。私どもへのお電話のときにも、遠慮なくお尋ねください。</p>
+      </div>
+    </div>
+    <div class="area-box" style="margin-top:22px">
+      <p class="area-main">代表より</p>
+      <p style="text-align:left">宇美町では、住宅が立ち並ぶ町のお宅にもお伺いしています。ねこちゃんとしては大きめの子のお見送りでは、お預かりする前に、ご家族でお別れの時間をとっていただきました。<br>お電話では「煙やにおいで、ご近所に知られないか」とよく聞かれます。専用車の外観は、葬儀車とわかる装飾をしておらず、火葬炉も、煙とにおいをおさえる作りです。<br>お骨を手元に置くかどうかも、ご家族のお気持ちに合わせて選んでいただけます。</p>
+      <p style="text-align:right">訪問ペット葬儀 そら色　代表 宇都宮 敏隆</p>
+    </div>
+    <div class="area-box" style="margin-top:22px">
+      <p class="area-main">宇美町でお手伝いした<br class="br-sp">お見送り</p>
+      <p>これまでに宇美町でお手伝いしたお見送りです。<br class="br-pc">お名前・ご住所は載せていません。</p>
+      <table class="company-table" style="margin-top:12px">
+      <tr><th>2026年10月</th><td>ねこちゃん（6kg超〜9kg）・お引き取り供養</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="umi-faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">よくあるご質問</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq">
+        <summary>どのくらいで来てもらえますか？</summary>
+        <p class="faq-a">その日のご予約の状況によって変わりますので、<strong>お電話をいただいた時点で、いちばん早くお伺いできるお時間をお伝えします</strong>。前日までにご予約いただけると確実ですが、当日でも空いていればお伺いできます。遠方の地域はご予約制となりますので、お早めにご相談ください。お迎えまでのご安置の方法も、お電話でご案内いたします。</p>
+      </details>
+      <details class="faq">
+        <summary>亡くなってから、まず何をすればいいですか？</summary>
+        <p class="faq-a">まずは涼しい場所に寝かせてあげてください。タオルなどを敷いた箱に安置し、保冷剤や氷でお腹と頭のあたりを冷やしていただくと、数日はきれいな状態を保てます。詳しくは<a href="#care">ペットのご安置・保存の方法</a>をご覧ください。お電話でもご案内いたします。</p>
+      </details>
+      <details class="faq">
+        <summary>大型犬でもお願いできますか？</summary>
+        <p class="faq-a">はい、体重50kgまでの大型犬に対応しています。ラブラドールやゴールデンレトリバーなどの大きなわんちゃんもお見送りできます。他社で断られてしまった場合も、ぜひご相談ください。</p>
+      </details>
+      <details class="faq">
+        <summary>夜中に亡くなってしまいました。今から電話しても大丈夫ですか？</summary>
+        <p class="faq-a">はい、<a href="tel:0120-050-221" class="tel-inline">0120-050-221</a> は24時間365日つながります。深夜・早朝でも遠慮なくお電話ください。ご火葬は22:00〜翌6:00のみ基本料金の20%増しとなりますが、ご相談のお電話にお金はかかりません。<strong>今夜はご家族でゆっくりお別れをして、ご火葬は明日以降にすることもできます</strong>（その場合は通常料金です）。</p>
+      </details>
+      <details class="faq">
+        <summary>立会火葬はどこで行うのですか？</summary>
+        <p class="faq-a">火葬設備を備えた専用車でお伺いしますので、ご自宅の駐車場や近隣の安全な場所で行えます。住み慣れた場所から見送ってあげられるのが訪問火葬の良いところです。駐車場所などはご予約の際にご相談ください。</p>
+      </details>
+      <details class="faq">
+        <summary>マンションの駐車場に停める場所がありません。</summary>
+        <p class="faq-a">ご心配いりません。来客用スペースや近くの安全な場所など、停められる場所をこちらでお探しします。ご予約のお電話のときに、お住まいの状況をお聞かせください。</p>
+      </details>
+      <details class="faq">
+        <summary>表の料金のほかに、かかるものはありますか？</summary>
+        <p class="faq-a">骨壺・骨袋（一任火葬・立会火葬）、お骨上げの道具（立会火葬）、お線香をあげていただく簡易の祭壇は、料金に含まれています。<strong>お伺いする前に、お電話で総額をお伝えします。</strong>深夜・早朝のご火葬や、当日に体重を確認して料金が変わる場合も、ご火葬の前に必ずお伝えし、ご了承いただいてから進めます。お供えのお花は含まれませんので、送ってあげたいお花があればご用意ください。</p>
+      </details>
+      <details class="faq">
+        <summary>支払い方法は選べますか？</summary>
+        <p class="faq-a">現金のほか、クレジットカード・電子マネー・QRコード決済にも対応しています。ご訪問先で決済端末をお使いいただけますので、当日に現金をご用意いただく必要はありません。<strong>お支払いは、ご火葬が終わってからで結構です。</strong><br>
+        ・クレジットカード：Visa／Mastercard／JCB／アメリカン・エキスプレス／ダイナースクラブ ほか<br>
+        ・電子マネー：iD／QUICPay／交通系IC<br>
+        ・QRコード決済：PayPay／d払い／au PAY／メルペイ／WeChat Pay／Alipay+<br>
+        ご事情がある場合は、お電話のときにご相談ください。</p>
+      </details>
+      <details class="faq">
+        <summary>宇美町にお店はありますか？</summary>
+        <p class="faq-a">宇美町に店舗はございません。福岡市南区の福岡南店が、福岡市方面のお客様の窓口です（ご来店での受付は行っておりません）。ご相談・ご予約はお電話（<a href="tel:0120-050-221" class="tel-inline">0120-050-221</a>）で承り、ご火葬はすべて、ご自宅などご指定の場所へお伺いして行います。ご遺骨のお渡しも、ご自宅へお伺いする形で対応いたします。</p>
+      </details>
+    </div>
+    <p style="text-align:center;margin-top:22px"><a href="#cancel">キャンセル・日時変更について →</a>　<a href="#prices">料金表を見る →</a></p>
+  </div>
+</section>
+
+<!-- ===== キャンセル・日時変更 ===== -->
+<section class="sp-fold" id="cancel">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">キャンセル<span class="pc-only">・</span><br class="br-sp">日時変更について</h2>
+    </div>
+    <div class="cancel-box">
+      <p>トラブル防止のため、ご予約の変更やキャンセルはできるだけお早めにご連絡ください。ご事情による変更は可能な限り対応いたします。</p>
+      <p>ご予約時間を過ぎてもご連絡がない場合は、キャンセル扱いとさせていただく場合がございます。出発後の日時変更につきましても、キャンセルと同じ費用を頂戴いたします。</p>
+    </div>
+    <table class="cancel-table">
+      <tr><th>出発前の<br class="br-sp">変更・キャンセル</th><td>無料</td></tr>
+      <tr><th>出発後〜到着前の<br class="br-sp">変更・キャンセル</th><td>ご予約料金の30%</td></tr>
+      <tr><th>到着後の<br class="br-sp">変更・キャンセル</th><td>ご予約料金の50%</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 宇美町での手続き ===== -->
+<section class="area" id="umi-proc">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">宇美町での手続き<br class="br-sp">（飼い犬が亡くなったとき）</h2>
+      <p class="sec-note">飼い犬が亡くなったときは、<br class="br-sp">町への届出が必要です。</p>
+    </div>
+    <table class="company-table">
+      <tr><th>届け先</th><td>宇美町役場 環境課 環境衛生係<br>お電話 092-934-2226・FAX 092-933-7512</td></tr>
+      <tr><th>届け方</th><td>できるだけ早く、窓口・お電話・<a href="https://logoform.jp/form/uLgK/1088717" target="_blank" rel="noopener">電子申請</a>で。窓口では「犬の死亡届書」を出します</td></tr>
+      <tr><th>伝えること</th><td>飼い主のお名前・住所・電話番号、犬の名前、犬の死亡日、鑑札番号</td></tr>
+      <tr><th>マイクロチップ</th><td>マイクロチップを登録している場合は、宇美町への届出は要りません。指定登録機関のサイトで手続きをします</td></tr>
+    </table>
+    <p style="margin-top:14px">くわしくは、宇美町のホームページ「<a href="https://www.town.umi.lg.jp/site/inuneko001/31537.html" target="_blank" rel="noopener">犬を飼い始めた方・これから飼う方</a>」をご覧ください。手続きのことも、私どもへのお電話のときに遠慮なくお尋ねください。</p>
+  </div>
+</section>
+
+<!-- ===== LINE・SNS ===== -->
+<section class="area" id="umi-sns">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">LINE・SNSでも<br class="br-sp">ご相談いただけます</h2>
+      <p class="sec-note">お電話がためらわれるときは、LINEからでもかまいません。<span class="pc-only"><br>タップ、またはスマホのカメラで読み取れます。</span></p>
+    </div>
+    <div class="sns-line">
+      <a class="sns-line-link" href="https://lin.ee/QXDJtZ7" target="_blank" rel="noopener"><img class="sns-line-qr" src="../qr-line.png" width="150" height="150" alt="LINE公式アカウントのQRコード" loading="lazy"><span class="sns-line-btn">LINEで相談する（友だち追加）</span></a>
+      <p class="sns-others">そのほかのSNS：<br class="br-sp"><a href="https://www.instagram.com/pet_sorairo/" target="_blank" rel="noopener">Instagram</a>・<a href="https://www.facebook.com/share/1Et9YsYUZY/" target="_blank" rel="noopener">Facebook</a>・<a href="https://vt.tiktok.com/ZSXRJJCDx/" target="_blank" rel="noopener">TikTok</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 最終CTA ===== -->
+<div class="final-cta">
+  <h2 class="serif">まずはお気持ちを、お聞かせください。</h2>
+  <p>宇美町へ、24時間365日うけたまわります。<br class="br-sp">ご相談・お見積りは無料です。<br>お電話をお受けするところから、<br class="br-sp">ご火葬・ご供養まで、<br class="br-sp">すべて私どもが直接行っております。</p>
+  <a class="btn-tel" href="tel:0120-050-221">
+    <span class="l1">通話無料・24時間365日受付</span>
+    <span class="l2">0120-050-221</span>
+  </a>
+</div>
+
+<!-- ===== フッター ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand">訪問ペット葬儀 そら色</p>
+      <p>【うきは本店】〒839-1406 福岡県うきは市浮羽町高見1726-13<br>【福岡南店】〒811-1311 福岡県福岡市南区横手3丁目31-13 徳永ビル105<br><a href="tel:0120-050-221" class="tel-inline">0120-050-221</a>（24時間365日受付）<br>対応エリア：福岡県（久留米市・うきは市・朝倉市・福岡市 ほか）・佐賀県（鳥栖市 ほか）・大分県（日田市・玖珠町・九重町）</p>
+    </div>
+    <nav class="footer-nav" aria-label="フッターメニュー">
+      <ul>
+        <li><a href="#plans">料金・プラン</a></li>
+        <li><a href="#prices">料金表</a></li>
+        <li><a href="#care">ペットのご安置</a></li>
+        <li><a href="#car">火葬車について</a></li>
+        <li><a href="#pets">対応できるペット</a></li>
+        <li><a href="#flow">ご葬儀の流れ</a></li>
+        <li><a href="#umi-area">宇美町の対応エリア</a></li>
+        <li><a href="#umi-worry">よくあるご不安</a></li>
+        <li><a href="#umi-faq">よくあるご質問</a></li>
+        <li><a href="#cancel">キャンセルについて</a></li>
+        <li><a href="#umi-proc">宇美町での手続き</a></li>
+        <li><a href="#umi-sns">LINE・SNS</a></li>
+        <li><a href="../">そら色トップページ</a></li>
+        <li><a href="../#company">会社概要</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="copyright">© 2026 訪問ペット葬儀 そら色</p>
+</footer>
+
+<!-- ===== 画面下の相談ボタン（スマホだけ・少し下へ読み進めると出る。出し入れは slides.js） ===== -->
+<nav class="sp-bar" aria-label="ご相談の窓口">
+  <a class="sp-bar-tel" href="tel:0120-050-221"><span class="l1">ご相談だけでも・24時間</span><span class="l2">0120-050-221</span></a>
+  <a class="sp-bar-line" href="https://lin.ee/QXDJtZ7" target="_blank" rel="noopener"><span class="l1">お急ぎの方はお電話を</span><span class="l2">LINEで相談</span></a>
+</nav>
+
+<script>
+(function () {
+  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+  if (location.hash) {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+  window.scrollTo(0, 0);
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) { window.scrollTo(0, 0); }
+  });
+})();
+</script>
+<script>
+// 火葬車の写真：タップで大きく表示し、✕・写真の外・Escで閉じる
+(function () {
+  var imgs = document.querySelectorAll('.car-photos img');
+  if (!imgs.length) return;
+  var box = document.createElement('div');
+  box.className = 'photo-zoom';
+  box.setAttribute('role', 'dialog');
+  box.setAttribute('aria-modal', 'true');
+  box.innerHTML = '<button type="button" class="photo-zoom-close" aria-label="閉じる">✕</button><img alt=""><p></p>';
+  document.body.appendChild(box);
+  var big = box.querySelector('img'), cap = box.querySelector('p'), btn = box.querySelector('button');
+  function close() { box.classList.remove('on'); document.documentElement.style.overflow = ''; }
+  imgs.forEach(function (im) {
+    im.setAttribute('tabindex', '0');
+    function open() {
+      big.src = im.currentSrc || im.src; big.alt = im.alt;
+      var fc = im.parentNode.querySelector('figcaption');
+      cap.textContent = fc ? fc.textContent : '';
+      box.classList.add('on'); document.documentElement.style.overflow = 'hidden'; btn.focus();
+    }
+    im.addEventListener('click', open);
+    im.addEventListener('keydown', function (e) { if (e.key === 'Enter') open(); });
+  });
+  btn.addEventListener('click', close);
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>
+<script>
+// 料金表：体重を選ぶと、表の同じ行の3つの料金を大きく出す（料金は表から読む＝表と食い違わない）
+(function () {
+  var rows = document.querySelectorAll('#prices table.price tbody tr');
+  var box = document.querySelector('.pick-weights');
+  if (!rows.length || !box) return;
+  var now = document.querySelector('.pick-now');
+  var yen = document.querySelectorAll('.pick-card .pc-yen b');
+  function show(i) {
+    var td = rows[i].querySelectorAll('td');
+    var w = td[0].textContent.trim();
+    now.querySelector('b').textContent = w;
+    for (var k = 0; k < 3; k++) yen[k].textContent = td[k + 1].textContent.replace('円', '');
+    box.querySelectorAll('button').forEach(function (b, j) { b.classList.toggle('on', j === i); b.setAttribute('aria-pressed', j === i); });
+  }
+  rows.forEach(function (r, i) {
+    var w = r.querySelector('td').textContent.trim();
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = w.indexOf('〜') >= 0 ? '<small>' + w.split('〜')[0].replace('超', '') + '〜</small>' + w.split('〜')[1] : '<small>〜</small>' + w.replace('以下', '');
+    b.addEventListener('click', function () { show(i); });
+    box.appendChild(b);
+  });
+  show(3);   // 最初は「3kg超〜6kg」
+})();
+</script>
+<script src="../slides.js?v=20260923" defer></script>
+<!-- Cloudflare Web Analytics（2026/9/21設置・ドメイン pet-kasou-sorairo.com） 見る場所: Cloudflare → 分析 → ウェブ分析 -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "36f470f889f24973a0f9d95e16804fc0"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+</html>

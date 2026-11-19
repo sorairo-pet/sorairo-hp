@@ -1700,3 +1700,10 @@ table.price thead th small { word-break: keep-all; overflow-wrap: anywhere; }
   .slide-cap p { font-size: 16.5px; }
   .sum-list span { font-size: 16.5px; }
 }
+
+/* ご安置のカード5枚（2026/11/19）：PCは3枚＋2枚で2段目を真ん中に・900px以下は2枚ずつ・スマホは1枚ずつ
+   （グリッドの auto-fit のままだと 1440pxで5列＝細くて見出しが切れる／1024〜1280pxで3＋2の右が空く） */
+.care-grid { display: flex; flex-wrap: wrap; justify-content: center; }
+.care-grid > .care-card { flex: 0 1 calc((100% - 40px) / 3); min-width: 0; }
+@media (max-width: 900px) { .care-grid > .care-card { flex-basis: calc((100% - 20px) / 2); } }
+@media (max-width: 720px) { .care-grid > .care-card { flex-basis: 100%; } }

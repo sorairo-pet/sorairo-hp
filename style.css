@@ -1680,3 +1680,23 @@ table.price thead th small { word-break: keep-all; overflow-wrap: anywhere; }
   .fz-cols li { font-size: 13.5px; }
   .fz-cols li small { font-size: 11px; }
 }
+
+/* PCのスライド枠を小さく・下の白い欄を低く（2026/11/18 代表「PC版はスライド枠をもう少し小さく」「白い枠の縦を狭めて画面に入るように」・11/19 公開）
+   代表のPC（表示125%・中身は約1494×700px）で、スライドの枠の下端が画面に入る大きさ */
+@media (min-width: 721px) {
+  .hero-slides { max-width: min(540px, 100%); }
+  .slide-cap { padding: 10px 18px 12px; }
+  .slide-step { font-size: 12.5px; padding: 2px 13px; margin-bottom: 5px; }
+  .slide-cap h3 { margin-bottom: 3px; }
+  .slide-cap p { line-height: 1.65; }
+  .sum-list { margin: 8px 0 8px; gap: 6px; }
+  .sum-list li { padding: 6px 14px; }
+  .sum-list b { width: 26px; height: 26px; font-size: 14px; }
+  .sum-tel .l2 { font-size: 23px; }
+}
+@media (min-width: 1400px) {
+  .hero-inner { grid-template-columns: minmax(0, 1fr) 500px; }
+  .slide-cap h3 { font-size: 20.5px; }
+  .slide-cap p { font-size: 16.5px; }
+  .sum-list span { font-size: 16.5px; }
+}

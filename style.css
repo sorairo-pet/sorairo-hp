@@ -737,7 +737,7 @@
   }
   .slide.is-lead .slide-cap h3, .slide.is-end .slide-cap h3 { color: var(--sky-deep); }
   .slide-cap p { font-size: 16px; color: var(--text-mid); line-height: 1.8; }
-  .slide-cap .warn { color: #A8442E; font-weight: 700; }
+  .slide-cap .warn, .care-card .warn { color: #A8442E; font-weight: 700; }  /* ご安置のカードもスライドと同じ文（2026/11/19） */
   .slide-bar { grid-column: 1; grid-row: 2; height: 3px; background: var(--sky-light); }
   .slide-progress { display: block; height: 100%; width: 0; background: var(--sky-mid); }
 
